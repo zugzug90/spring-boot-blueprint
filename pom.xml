@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.sivalabs.maven.archetypes</groupId>
-    <artifactId>spring-boot-java-rest-api-archetype</artifactId>
-    <version>0.0.3-SNAPSHOT</version>
+    <groupId>com.room606.maven.archetypes</groupId>
+    <artifactId>spring-boot-blueprint</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
-    <name>spring-boot-java-rest-api-archetype</name>
-    <description>SpringBoot Maven Archetype for Java REST API</description>
-    <url>https://github.com/sivalabs/spring-boot-java-rest-api-archetype</url>
+    <name>spring-boot-blueprint</name>
+    <description>Maven Archetype for SpringBoot Web Apps</description>
+    <url>https://github.com/zugzug90/spring-boot-blueprint</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,17 +32,10 @@
     <developers>
         <developer>
             <id>author</id>
-            <name>K Siva Prasad Reddy</name>
-            <email>sivaprasadreddy.k@gmail.com</email>
+            <name>zugzug90</name>
+            <email>minibfg@gmail.com</email>
         </developer>
     </developers>
-
-    <scm>
-        <connection>scm:git:https://github.com/sivalabs/spring-boot-java-rest-api-archetype.git</connection>
-        <developerConnection>scm:git:https://github.com/sivalabs/spring-boot-java-rest-api-archetype.git</developerConnection>
-        <url>https://github.com/sivalabs/spring-boot-java-rest-api-archetype</url>
-        <tag>HEAD</tag>
-    </scm>
 
     <distributionManagement>
         <snapshotRepository>

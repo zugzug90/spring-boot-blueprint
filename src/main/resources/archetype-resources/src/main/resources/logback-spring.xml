@@ -3,27 +3,27 @@
 #set( $symbol_escape = '\' )
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
-    <springProperty scope="context" name="logstashHost" source="logstash.host" defaultValue="localhost"/>
+    <!--<springProperty scope="context" name="logstashHost" source="logstash.host" defaultValue="localhost"/>-->
 
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <!--<destination>localhost:5000</destination>-->
+    <!--<appender name="stash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        &lt;!&ndash;<destination>localhost:5000</destination>&ndash;&gt;
         <destination>${symbol_dollar}{logstashHost}:5000</destination>
 
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
-                <mdc/> <!-- MDC variables on the Thread will be written as JSON fields-->
-                <context/> <!--Outputs entries from logback's context -->
-                <version/> <!-- Logstash json format version, the @version field in the output-->
+                <mdc/> &lt;!&ndash; MDC variables on the Thread will be written as JSON fields&ndash;&gt;
+                <context/> &lt;!&ndash;Outputs entries from logback's context &ndash;&gt;
+                <version/> &lt;!&ndash; Logstash json format version, the @version field in the output&ndash;&gt;
                 <logLevel/>
                 <loggerName/>
 
                 <pattern>
                     <pattern>
                         {
-                        <!-- we can add some custom fields to be sent with all the log entries.-->
-                        <!--make filtering easier in Logstash-->
+                        &lt;!&ndash; we can add some custom fields to be sent with all the log entries.&ndash;&gt;
+                        &lt;!&ndash;make filtering easier in Logstash&ndash;&gt;
                         "app-name": "${artifactId}",
                         "app-version": "1.0"
                         }
@@ -33,18 +33,18 @@
                 <threadName/>
                 <message/>
 
-                <logstashMarkers/> <!-- Useful so we can add extra information for specific log lines as Markers-->
-                <arguments/> <!--or through StructuredArguments-->
+                <logstashMarkers/> &lt;!&ndash; Useful so we can add extra information for specific log lines as Markers&ndash;&gt;
+                <arguments/> &lt;!&ndash;or through StructuredArguments&ndash;&gt;
 
                 <stackTrace/>
             </providers>
         </encoder>
-    </appender>
+    </appender>-->
 
     <springProfile name="docker">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="stash"/>
+            <!--<appender-ref ref="stash"/>-->
         </root>
     </springProfile>
     <springProfile name="!docker">

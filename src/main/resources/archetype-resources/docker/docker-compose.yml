@@ -1,0 +1,105 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+#set( $regex = "([a-z])([A-Z]+)")
+#set( $replacement = "$1_$2")
+#set( $appEnvVarPrefix = $artifactId.replaceAll($regex, $replacement).toUpperCase().replaceAll("-", "_"))
+version: '3.1'
+services:
+
+  ${artifactId}:
+    image: room606/${artifactId}:${version}
+    container_name: ${artifactId}
+    environment:
+      SERVER_PORT: 8080
+      $appEnvVarPrefix_PROP_A: "${symbol_dollar}{${appEnvVarPrefix}_PROP_A:-123}"
+      SPRING_DATASOURCE_URL: "jdbc:postgresql://${dbName}:5432/${dbName}?user=${dbUser}&password=${dbPassword}"
+    ports:
+      - "8080:8080"
+      # metrics port
+      - "8081:8081"
+      - "5005:5005"
+    depends_on:
+      - ${dbName}
+
+  ${dbName}:
+    image: postgres:10
+    container_name: ${dbName}
+    environment:
+      - POSTGRES_USER=${dbUser}
+      - POSTGRES_PASSWORD=${dbPassword}
+      - POSTGRES_DB=${dbName}
+      - PGDATA=/data/postgres
+#    volumes:
+#      - ~/data/postgres:/data/postgres
+    ports:
+      - "5432:5432"
+
+#  grafana:
+#    image: grafana/grafana
+#    ports:
+#    - 3000:3000
+#    volumes:
+#    - grafana_data:/var/lib/grafana
+#    environment:
+#    - GF_SECURITY_ADMIN_PASSWORD=admin
+#    - GF_SECURITY_ADMIN_USER=admin
+#    - GF_USERS_ALLOW_SIGN_UP=false
+#    depends_on:
+#    - prometheus
+#
+#  prometheus:
+#    image: prom/prometheus
+#    ports:
+#      - 9090:9090
+#    volumes:
+#      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+#      - prometheus_data:/prometheus
+#    command:
+#      - --config.file=/etc/prometheus/prometheus.yml
+#
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.2
+#    container_name: elasticsearch
+#    environment:
+#      - cluster.name=docker-cluster
+#      - bootstrap.memory_lock=true
+#      - xpack.security.enabled=false
+#      - "ES_JAVA_OPTS=-Xmx2048m -Xms2048m"
+#    volumes:
+#      - esdata1:/usr/share/elasticsearch/data
+#    ports:
+#      - "9200:9200"
+#      - "9300:9300"
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:6.2.2
+#    container_name: logstash
+#    command: logstash -f /etc/logstash/conf.d/logstash.conf
+#    volumes:
+#      - ./config:/etc/logstash/conf.d
+#    ports:
+#      - "5000:5000"
+#    links:
+#      - elasticsearch
+#
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:6.2.2
+#    container_name: kibana
+#    environment:
+#      - ELASTICSEARCH_URL=http://elasticsearch:9200
+#    ports:
+#      - "5601:5601"
+#    links:
+#      - elasticsearch
+
+#volumes:
+#  prometheus_data: {}
+#  grafana_data: {}
+#  esdata1:
+#    driver: local
+

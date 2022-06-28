@@ -14,6 +14,16 @@
       <includes>
         <include>**/*.xml</include>
         <include>**/*.properties</include>
+        <include>**/*.sql</include>
+        <include>**/banner.txt</include>
+      </includes>
+    </fileSet>
+    <fileSet filtered="true" encoding="UTF-8">
+      <directory>src/test/resources</directory>
+      <includes>
+        <include>**/*.xml</include>
+        <include>**/*.properties</include>
+        <include>**/*.sql</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
@@ -44,7 +54,6 @@
       <directory></directory>
       <includes>
         <include>mvnw.cmd</include>
-        <include>.gitignore</include>
         <include>mvnw</include>
         <include>.travis.yml</include>
       </includes>
@@ -53,10 +62,13 @@
     <fileSet filtered="true" encoding="UTF-8">
       <directory></directory>
       <includes>
-        <include>Dockerfile</include>
+        <include>docker/Dockerfile</include>
+        <include>docker/*.sh</include>
+        <include>.gitignore</include>
+        <include>.gitattributes</include>
         <include>README.md</include>
         <include>Jenkinsfile</include>
-        <include>docker-compose.yml</include>
+        <include>docker/docker-compose.yml</include>
       </includes>
     </fileSet>
 
@@ -76,4 +88,27 @@
     </fileSet>
 
   </fileSets>
+  <requiredProperties>
+    <requiredProperty key="mainClassName">
+      <defaultValue>BlueprintApplication</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="firstModel">
+      <defaultValue>BlueprintItem</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="apiPrefix">
+      <defaultValue>/restapi/v1.0/blueprint/</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="dbName">
+      <defaultValue>blueprint</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="dbUser">
+      <defaultValue>blueprint_app</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="dbPassword">
+      <defaultValue>blueprint_app</defaultValue>
+    </requiredProperty>
+    <requiredProperty key="projectDescription">
+      <defaultValue>Awesome Blueprint App</defaultValue>
+    </requiredProperty>
+  </requiredProperties>
 </archetype-descriptor>

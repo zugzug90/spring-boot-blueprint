@@ -1,4 +1,4 @@
-# spring-boot-java-rest-api-archetype
+# spring-boot-blueprint Maven Archetype
 
 ## How to use?
 
@@ -8,8 +8,8 @@ You can generate project using this archetype using `mvn archetype:generate` and
 ### Install archetype locally
 
 ```bash
-git clone https://github.com/sivalabs/spring-boot-java-rest-api-archetype.git
-cd spring-boot-java-rest-api-archetype
+git clone https://github.com/zugzug90/spring-boot-blueprint.git
+cd spring-boot-blueprint
 ./mvnw clean install
 ```
 
@@ -17,18 +17,26 @@ cd spring-boot-java-rest-api-archetype
 
 ```
 mvn archetype:generate \
-    -B -DarchetypeGroupId=io.github.sivalabs.maven.archetypes \
-    -DarchetypeArtifactId=spring-boot-java-rest-api-archetype \
-    -DarchetypeVersion=0.0.1 \
-    -DgroupId=com.mycompany \
-    -DartifactId=myapp \
-    -Dversion=1.0-SNAPSHOT \
-    -Dpackage=com.mycompany.myapp
+    -B -DarchetypeGroupId=com.room606.maven.archetypes \
+    -DarchetypeArtifactId=spring-boot-blueprint \
+    -DarchetypeVersion=0.0.1-SNAPSHOT \
+    -DgroupId=com.room606.experimental \
+    -DartifactId=experimental-app \
+    -Dversion=0.0.1 \
+    -Dpackage=com.room606.experimental \
+    -DmainClassName=AwesomeApp \
+    -DfirstModel=AwesomeItem \
+    -DapiPrefix=/restapi/v1.0/awesome/ \
+    -DdbName=awesome \
+    -DdbUser=awesome_app \
+    -DdbPassword=awesome_app \
+    -DprojectDescription="Awesome Web App With Cool Features Set" \
+    && find . -iname \*.sh -print0 | xargs -r0 chmod +x
 ```
 
 Generates basic SpringBoot REST API application with the following features:
 
-* Database support (H2/Postgres)
+* Database support (Postgres)
 * Configured Dockerfile, Jenkinsfile
 * Flyway DB migrations
 * Monitoring with Prometheus, Grafana
@@ -42,11 +50,11 @@ Create or update archetypes and set version to SNAPSHOT (ex: 1.0.0-SNAPSHOT)
 
 Deploy SNAPSHOT version to https://oss.sonatype.org/content/repositories/snapshots/
 
-`spring-boot-java-rest-api-archetype> ./mvnw clean deploy -P release`
+`spring-boot-blueprint> ./mvnw clean deploy -P release`
 
 Deploy release version to Maven Central
 
 ```
-spring-boot-java-rest-api-archetype> ./mvnw release:clean release:prepare -P release
-spring-boot-java-rest-api-archetype> ./mvnw release:perform -P release
+spring-boot-blueprint> ./mvnw release:clean release:prepare -P release
+spring-boot-blueprint> ./mvnw release:perform -P release
 ```

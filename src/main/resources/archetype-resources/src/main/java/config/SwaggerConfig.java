@@ -31,8 +31,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
-                "MyApp REST API",
-                "MyApp REST API",
+                "${artifactId} REST API",
+                "${artifactId} REST API",
                 "1.0",
                 "Terms of service",
                 new Contact("MyAppDevTeam", "http://myapps.com", "support@myapp.com"),
