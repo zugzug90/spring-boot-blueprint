@@ -14,11 +14,11 @@ services:
       SERVER_PORT: 8080
       $appEnvVarPrefix_PROP_A: "${symbol_dollar}{${appEnvVarPrefix}_PROP_A:-123}"
       SPRING_DATASOURCE_URL: "jdbc:postgresql://${dbName}:5432/${dbName}?user=${dbUser}&password=${dbPassword}"
-    ports:
-      - "8080:8080"
+    #ports:
+    #  - "8080:8080"
       # metrics port
-      - "8081:8081"
-      - "5005:5005"
+    #  - "8081:8081"
+    #  - "5005:5005"
     depends_on:
       - ${dbName}
 
@@ -34,6 +34,18 @@ services:
 #      - ~/data/postgres:/data/postgres
     ports:
       - "5432:5432"
+
+  nginx:
+    image: fabiocicerchia/nginx-lua:1.21.1
+    container_name: "nginx"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/htpasswd:/etc/nginx/htpasswd:ro
+      - ./nginx/ui:/var/www/ui
+      - ./nginx/sounds:/var/www/sounds
+    ports:
+      - "8025:8025"
+      - "80:80"
 
 #  grafana:
 #    image: grafana/grafana

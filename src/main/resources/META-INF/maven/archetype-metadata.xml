@@ -64,11 +64,29 @@
       <includes>
         <include>docker/Dockerfile</include>
         <include>docker/*.sh</include>
+        <include>docker/nginx/**/*.conf</include>
+        <include>docker/nginx/**/*.html</include>
+        <include>docker/nginx/htpasswd</include>
         <include>.gitignore</include>
         <include>.gitattributes</include>
         <include>README.md</include>
         <include>Jenkinsfile</include>
         <include>docker/docker-compose.yml</include>
+      </includes>
+    </fileSet>
+
+    <fileSet filtered="false" encoding="UTF-8">
+      <directory></directory>
+      <includes>
+        <include>docker/nginx/**/*.ico</include>
+        <include>docker/nginx/**/*.png</include>
+        <include>docker/nginx/**/*.gif</include>
+        <include>docker/nginx/**/*.svg</include>
+        <include>docker/nginx/**/*.css</include>
+        <include>docker/nginx/**/*.mp3</include>
+        <include>docker/nginx/**/*.ogg</include>
+        <include>docker/nginx/**/*.wav</include>
+        <include>docker/nginx/**/*.mp4</include>
       </includes>
     </fileSet>
 

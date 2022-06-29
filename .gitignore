@@ -25,6 +25,7 @@
 /.nb-gradle/
 
 target/
+experimental/
 log/
 docker/bin
 docker/*.jar
