@@ -58,3 +58,10 @@ Deploy release version to Maven Central
 spring-boot-blueprint> ./mvnw release:clean release:prepare -P release
 spring-boot-blueprint> ./mvnw release:perform -P release
 ```
+
+
+## Nginx
+### htpasswd file
+Default creds in file
+- ExtremeCode / B00b@!
+- YoloMan / AYMFqCL!
